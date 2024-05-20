@@ -1,0 +1,280 @@
+\documentclass[a4paper]{article} % Formato de plantilla general
+
+\usepackage[utf8]{inputenc} % Para poder utilizar caracteres especiales
+\usepackage[spanish]{babel} % Para usar caracteres especiales
+\usepackage[margin=2cm, top=2cm, includefoot]{geometry} % Para establecer los márgenes
+\usepackage{graphicx} % Para la inserción de imágenes
+\usepackage[table,xcdraw]{xcolor} % Para la representación de colores
+\usepackage{tikz} % Para diagramas
+\usepackage[most]{tcolorbox} % Para las cajas de sugerencias o notas
+\usepackage{fancyhdr} % Para definir el estilo de la página
+\usepackage[hidelinks]{hyperref} % Gestión de hipervínculos
+\usepackage{setspace} % Para el espacio entre líneas del párrafo
+\usepackage{parskip} % Elimina la sangría de los párrafos
+\usepackage[figurename=Imagen]{caption} % Para cambiar el nombre del caption de las imágenes
+\usepackage{ragged2e} % Para justificación de los textos cuando se usa \centering
+\usepackage{listings} % Para la inserción de código en el documento
+
+\setstretch{1.2} % Indicamos la cantidad del espaciado
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.8em plus 0.5em minus 0.2em} % Establece espacio entre párrafos
+\setlength{\parfillskip}{\parindent plus 1fill}
+
+% Declaración de variables personalizadas
+\newcommand{\logoPortada}{Images/Vulnhub.png}
+\newcommand{\machineName}{Presidential: 1}
+\newcommand{\logoMachine}{Images/casablanca.png}
+\newcommand{\startDate}{07 Mayo 2024}
+\newcommand{\logoEmpresa}{Images/logoEmpresa.jpg}
+\newcommand{\logoCliente}{Images/logoCliente.jpg}
+
+% Definición de colores
+\definecolor{bluePortada}{HTML}{146c8a}
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+% % Plantillas personalizadas
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{backcolour},   
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2
+}
+\lstset{style=mystyle}
+
+% Para los cuadros de definición
+\newtcolorbox{definicion}{breakable, enhanced, colback=white, colframe=bluePortada!75!black, arc=0mm, boxrule=1pt, leftrule=12mm, fonttitle=\bfseries, coltitle=blue!75!black, title=Definición, attach title to upper=\par}
+
+% Adicionales
+\addto\captionsspanish{\renewcommand{\contentsname}{Índice}}
+\setlength{\headheight}{40.2pt}
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{\includegraphics[width=2cm]{\logoEmpresa}}
+\rhead{\includegraphics[width=2cm]{\logoCliente}}
+\renewcommand{\headrulewidth}{3pt} % Para aumentar el grosor de la línea en el índice
+% Para cambiar el color a la barra del índice
+\renewcommand{\headrule}{\hbox to\headwidth{\color{bluePortada}\leaders\hrule height \headrulewidth\hfill}}
+\renewcommand{\lstlistingname}{Código} % Para cambiar la palabra Listing a Código en los captions
+
+% Inicio del documento
+\begin{document}
+    \cfoot{\thepage} % Para los números en las páginas
+    \begin{titlepage}
+        \centering
+        \includegraphics[width=1\textwidth]{\logoPortada}\par\vspace{1cm}
+        {\scshape\large \textbf{Informe técnico}\par\vspace{0.4cm}}
+        {\huge\textcolor{bluePortada} {\textbf{Máquina \machineName}}}
+        
+        \vfill
+        \includegraphics[width=\textwidth, height=10cm, keepaspectratio]{\logoMachine}
+        \vfill
+
+        \begin{tcolorbox}[colback=red!5!white,colframe=red!75!black]
+            \centering 
+            Este documento es confidencial y contiene información sensible.\\
+            No debe ser impreso o compartido con terceros.
+        \end{tcolorbox}
+
+        \vfill
+        {\large \today\par}
+    \end{titlepage}
+
+    %--------------------------------------------------------------
+    % Inicio del TOC
+    \clearpage
+    \tableofcontents
+    \clearpage
+    %--------------------------------------------------------------
+    \section{Antecedentes}
+    El presente documento recoge los resultados obtenidos durante la fase de auditoría realizada a la máquina \textbf{\machineName}, enumerando todos los vectores de ataques encontrados así como la explotación realizada para cada uno de éstos.
+
+    Esta máquina ha sido descargada de la plataforma de \href{https://vulnhub.com}{\textbf{\color{bluePortada}Vulnhub}}, una plataforma de entrenamiento y práctica para personas interesadas en la seguridad informática y en el hacking ético.
+
+    A continuación, se proporciona el enlace directo de descarga a esta máquina:
+
+    \vspace{0.2cm}
+
+    \begin{tcolorbox}[enhanced,attach boxed title to top center={yshift=-3mm,yshifttext=-1mm}, colback=blue!5!white,colframe=blue!75!black,colbacktitle=bluePortada!80!black,
+    title=Dirección URL,fonttitle=\bfseries, boxed title style={size=small,colframe=red!50!black}]
+        \centering
+        \href{https://www.vulnhub.com/entry/presidential-1,500/}{\textbf{\color{bluePortada}https://vulnhub.com/entry/presidential-1,500/}}
+    \end{tcolorbox}
+
+    \vspace{0.5cm}
+
+    \begin{figure}[h]
+        \centering
+        \setlength{\fboxrule}{0.8pt} % Grosor del marco de la imagen
+        \fbox{\includegraphics[width=\textwidth]{Images/Presidential-00.png}}
+        \caption{Página principal del servicio web de la máquina}
+    \end{figure}
+
+    \section{Objetivos}
+    Los objetivos de la presente auditoría de seguridad se enfocan en la identificación de posibles vulnerabilidades y debilidades en la máquina \textbf{\color{bluePortada}\machineName}, con el propósito de garantizar la integridad y confidencialidad de la información almacenada en ella.
+
+    Con este fin, se ha llevado a cabo un análisis exhaustivo de todos los servicios detectados que se encontraban expuestos en dicho servidor, recopilando información detallada sobre aquellos que representan un riesgo potencial desde el punto de vista de la seguridad.
+
+    \clearpage
+    \subsection{Alcance}
+    A continuación, se presentan los objetivos a cumplir para esta auditoría:
+
+    \begin{itemize}
+        \item Identificar puertos y servicios vulnerables
+        \item Realizar una explotación de las vulnerabilidades encontradas
+        \item Ganar acceso al servidor mediante la explotación de los servicios vulnerables identificados.
+        \item Enumerar vías potenciales de elevar privilegios en el sistema una vez este haya sido vulnerado.
+    \end{itemize}
+
+    \subsection{Impedimentos y limitaciones}
+    Durante el proceso de auditoría, está terminantemente prohibido realizar alguna de las siguientes actividades:
+
+    \begin{itemize}
+        \item Realizar tareas que puedan ocasionar una \textbf{denegación de servicios} o afectar la disponibilidad de los servicios expuestos.
+        \item Borrar archivos residentes en el servidor una vez éste haya sido vulnerado.
+    \end{itemize}
+
+    \subsection{Resumen general} % Redactar algo resumido del proceso de auditoría realizado
+
+    \clearpage
+
+    \section{Reconocimiento}
+    \subsection{Enumeración de servicios expuestos}
+    A continuación, adjuntamos una evidencia de los puertos y servicios identificados durante el reconocimiento aplicado con la herramienta \textbf{nmap.}
+
+    \begin{figure}[h]
+        \centering
+        \setlength{\fboxrule}{0.8pt} % Grosor del marco de la imagen
+        \fbox{\includegraphics[width=\textwidth]{Images/ports.png}}
+        \caption{Enumeración de puertos con nmap}
+    \end{figure}
+
+    En este caso se identificaron 2 puertos activos ejecutándose por el protocolo TCP:
+
+    \vspace{0.5cm}
+
+    \centering
+    \begin{tikzpicture}[node distance=2cm, every node/.style={rectangle, draw, fill=white}]
+        \node(center){TCP};
+        \node(port1)[below left of=center, node distance=3cm]{Puerto 80};
+        \node(port2)[below right of=center, node distance=3cm]{Puerto 22};
+        \draw(center) -- (port1);
+        \draw(center) -- (port2);
+    \end{tikzpicture}
+
+    \vspace{0.5cm}
+    \justifying % Para eliminar el \centering
+    Asimismo, no se encontraron puertos expuestos a través de otros protocolos, por lo que se priorizará la evaluación de los puertos identificados en el primer escaneo efectuado.
+
+    \clearpage
+    \subsection{Enumeración de servidores web}
+
+    A continuación, se representan los resultados obtenidos con la herramienta \textbf{WhatWeb}, una herramienta de reconocimiento web que se utiliza para identificar tecnologías web específicas que se emplean en un sitio web.
+
+    \begin{figure}[h]
+        \centering
+        \setlength{\fboxrule}{0.8pt} % Grosor del marco de la imagen
+        \fbox{\includegraphics[width=\textwidth]{Images/whatweb.jpg}}
+        \caption{Enumeración del servidor HTTP por el puerto 80}
+    \end{figure}
+
+    En los resultados obtenidos, es posible identificar las versiones para algunas de las tecnologías existentes.
+    
+    \vspace{0.5cm}
+    \centering
+    \begin{tabular}{c | c}
+        \textbf{Tecnología} & \textbf{Versión} \\
+        \hline 
+        PHP & 5.5.38 \\
+        Apache & 2.4.6
+    \end{tabular}
+
+    \vspace{0.5cm}
+    \justifying
+    Dentro de la información representada, también es posible identificar 2 correos electrónicos, los cuales podrían ser utilizados de cara a un ataque de \textbf{Phishing}:
+
+    \vspace{0.5cm}
+    \begin{center}
+        \texttt{contact@example.com} \qquad \texttt{contact@votenow.local}
+    \end{center}
+
+    \vspace{0.5cm}
+    El \textbf{Phishing} es un tipo de ataque informático que se utiliza para engañar a las personas y obtener información confidencial, como contraseñas, información bancaria o detalles de tarjetas de crédito. El ataque se lleva a cabo mediante el envío de correos electrónicos fraudulentos o mensajes de texto que parecen legítimos y que solicitan al destinatario que proporcione información personal o confidencial.
+
+    Adicionalmente, también ha sido posible identificar la versión de \textbf{CentOS} que se encuentra activa a través de un reconocimiento exhaustivo realizado sobre el servidor web con la herramienta \textbf{wig}.
+
+    \clearpage
+
+    \subsection{Enumeración de subdominios}
+    Una vez identificado el dominio '\textbf{votenow.local}' gracias a los correos, se procedió a realizar un ataque de fuerza bruta sobre el dominio prícipal con el objetivo de identificar subdominios válidos.
+
+    Luego de finalizado el ataque de fuerza bruta, estos fueron los resultados obtenidos:
+
+    \begin{figure}[h]
+      \centering
+      \setlength{\fboxrule}{0.8pt} % Grosor del marco de la imagen
+      \fbox{\includegraphics[width=\textwidth]{Images/subDomains.png}}
+      \caption{Subdominios identificados con \textbf{gobuster}}
+      \label{fig:identifiedSubdomains}
+    \end{figure}
+
+    Tal como se aprecia en la imagen \ref{fig:identifiedSubdomains} de la página \pageref{fig:identifiedSubdomains}
+
+    Se identificó '\textbf{datasafe.votenow.local}' como válido. Este subdominio representó un punto crucial en la auditoría, dado que fue por éste que se consiguió ingresa al sistema mediante la explotación de una vulnerabilidad existente en \textbf{PhpMyAdmin}.
+
+    Cabe destacar que para que estos dominios y subdominios fueran accesibles, fue necesario incorporar el siguiente contenido en el archivo '\textbf{/etc/hosts}'.
+
+    \begin{verbatim}
+      # Host addresses
+      127.0.0.1  localhost
+      127.0.1.1  parrot
+      ::1        localhost ip6-localhost ip6-loopback
+      ff02::1    ip6-allnodes
+      ff02::2    ip6-allrouters
+      # Others
+      10.129.154.225 votenow.local
+    \end{verbatim}
+    Esto es así porque se está aplicando \textbf{Virtual Hosting}, una técnica utilizada para alojar múltiples sitios web en una sola máquina física.
+
+    \clearpage
+    \subsection{Enumeración de paneles de autenticación.}
+    Una vez descubierto el subdominio '\textbf{datasafe.votenow.local}'    
+  
+  \section{Identificación y explotación de vulnerabilidades}
+    \subsection{Archivo de backup expuesto}
+
+    %\clearpage
+    Este archivo fue descargado para validar la información si era o no sensible
+
+    Escript de ejemplo de código:
+    \begin{lstlisting}[language=Python, caption=Exploit para la version]
+    #!/usr/bin/python3
+    from pwn import *
+
+    if __name__ == '__main__':
+      print("Hola mundo!")
+
+    \end{lstlisting}
+
+    \begin{definicion}
+      LFI (Local File Inclusion) es una vulnerabilidad de seguridad en aplicaciones web que permite que un atacante pueda acceder a archivos locales del servidor a través de la inclusión de archivos locales.
+    \end{definicion}
+  \section{Escalada de privilegios}
+  \section{Contramedidas y buenas practicas}
+  \section{Conclusiones}
+  
+\end{document} % Fin del documento.
