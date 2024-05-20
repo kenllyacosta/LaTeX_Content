@@ -1,0 +1,93 @@
+\documentclass[a4paper]{article} % Formato de plantilla general
+\usepackage{lipsum}
+
+\usepackage[utf8]{inputenc} % Para poder utilizar caracteres especiales
+\usepackage[spanish]{babel} % Para usar caracteres especiales
+\usepackage[margin=2cm, top=2cm, includefoot]{geometry} % Para establecer los márgenes
+\usepackage{graphicx} % Para la inserción de imágenes
+\usepackage[table,xcdraw]{xcolor} % Para la representación de colores
+\usepackage{tikz} % Para diagramas
+\usepackage[most]{tcolorbox} % Para las cajas de sugerencias o notas
+\usepackage{fancyhdr} % Para definir el estilo de la página
+\usepackage[hidelinks]{hyperref} % Gestión de hipervínculos
+\usepackage{setspace} % Para el espacio entre líneas del párrafo
+\usepackage{parskip} % Elimina la sangría de los párrafos
+\usepackage[figurename=Imagen]{caption} % Para cambiar el nombre del caption de las imágenes
+\usepackage{ragged2e} % Para justificación de los textos cuando se usa \centering
+\usepackage{listings} % Para la inserción de código en el documento
+\usepackage{array} % Para tablas con columnas de ancho fijo
+\usepackage{makecell} % Para definir la altura de las celdas
+
+% Nuevos comandos y variables
+\newcommand{\machineName}{Machine Name Here} \par
+
+% Definición de colores
+\definecolor{bluePortada}{HTML}{146c8a}
+
+% Para los cuadros de definición
+\newtcolorbox{definicion}{breakable, enhanced, colback=white, colframe=teal!75!black, arc=0mm, boxrule=1pt, leftrule=12mm, fonttitle=\bfseries, coltitle=teal!75!black, title=Definition, attach title to upper=\par}
+\newtcolorbox{warning}{breakable, enhanced, colback=white, colframe=orange!75!black, arc=0mm, boxrule=1pt, leftrule=12mm, fonttitle=\bfseries, coltitle=orange!75!black, title=Warning, attach title to upper=\par}
+\newtcolorbox{danger}{breakable, enhanced, colback=white, colframe=purple!75!black, arc=0mm, boxrule=1pt, leftrule=12mm, fonttitle=\bfseries, coltitle=purple!75!black, title=Warning, attach title to upper=\par}
+
+\setlength{\parskip}{0.8em plus 0.5em minus 0.2em} % Establece espacio entre párrafos
+
+\begin{document}
+    \begin{titlepage}
+        \centering
+        {\huge\textcolor{bluePortada} {\textbf{\machineName}}} \par
+        {\scshape\large \textbf{Writeup}\par\vspace{0.4cm}}
+        \begin{tabular}{| m{16.5cm} |}
+            \hline
+            \includegraphics[width=15.5cm,height=15.5cm]{example-image} \\
+            \hline
+        \end{tabular} \par
+        \justifying 
+        \lipsum[1][5-100]
+        \vspace{15cm}
+        \today
+    \end{titlepage}
+
+    \clearpage
+    \tableofcontents
+    \clearpage
+
+    \section{Synopsis}    
+        \lipsum[1][5-100]
+        \begin{definicion}
+            Your custom definition here to highlight any topic.
+        \end{definicion}
+        \begin{warning}
+            Your custom warning here to highlight any topic.
+        \end{warning}
+        \begin{danger}
+            Your custom danger here to highlight any topic.
+        \end{danger}
+        \subsection{Description}
+            \subsubsection{Skills Required}
+                \begin{itemize}
+                    \item SQLI
+                    \item Python
+                    \item ...
+                \end{itemize}
+            \subsubsection{Skills Learned}
+                \begin{itemize}
+                    \item SQLI
+                    \item Python
+                    \item ...
+                \end{itemize}
+
+    \section{Enumeration}
+        \subsection{NMAP}
+        \subsection{WHATWEB}
+        \subsection{WIG}
+        \subsection{WFUZ}
+        \subsection{Gobuster}
+        \subsection{SQLMap}
+        \subsection{Burpsuite}
+
+    \section{Foodhold}
+    \section{Privilege Scalation}
+        \subsection{Enumeration}
+        \subsection{Exploitation}
+
+\end{document}
