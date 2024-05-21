@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="147" height="185">
+<path d="M3,2H144V183H3V2M3,18H144M38,18V183" stroke-width=".6" stroke="#000" fill="none"/>
+<g font-size="13">
+<text x="40" y="14">Team sheet</text>
+<text x="10" y="30">GK</text>
+<text x="10" y="45">LB</text>
+<text x="10" y="60">DC</text>
+<text x="10" y="75">DC</text>
+<text x="10" y="90">RB</text>
+<text x="10" y="105">MC</text>
+<text x="10" y="120">MC</text>
+<text x="10" y="135">MC</text>
+<text x="10" y="150">FW</text>
+<text x="10" y="165">ST</text>
+<text x="10" y="180">ST</text>
+<text x="45" y="30">Paul Robinson</text>
+<text x="45" y="45">Lucus Radebe</text>
+<text x="45" y="60">Michael Duberry</text>
+<text x="45" y="75">Dominic Matteo</text>
+<text x="45" y="90">Dider Domi</text>
+<text x="45" y="105">David Batty</text>
+<text x="45" y="120">Eirik Bakke</text>
+<text x="45" y="135">Jody Morris</text>
+<text x="45" y="150">Jamie McMaster</text>
+<text x="45" y="165">Alan Smith</text>
+<text x="45" y="180">Mark Viduka</text>
+</g>
+</svg>

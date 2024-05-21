@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="27.561409mm"
+   height="9.3065691mm"
+   viewBox="0 0 97.658536 32.976032"
+   id="svg6659"
+   version="1.1"
+   inkscape:version="0.91 r13725"
+   sodipodi:docname="Tikz_Tutorial_-_nodes coordinates.svg">
+  <defs
+     id="defs6661" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="0.35"
+     inkscape:cx="-414.74216"
+     inkscape:cy="122.2023"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     inkscape:window-width="1366"
+     inkscape:window-height="706"
+     inkscape:window-x="-8"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1"
+     fit-margin-top="0"
+     fit-margin-left="0"
+     fit-margin-right="0"
+     fit-margin-bottom="0" />
+  <metadata
+     id="metadata6664">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(-354.02787,-621.58847)">
+    <g
+       transform="matrix(1.25,0,0,-1.25,345.55564,659.94441)"
+       inkscape:label="document3"
+       id="g7215">
+      <g
+         transform="translate(3.321,3.321)"
+         id="g7217">
+        <g
+           id="g7219">
+          <g
+             id="g7221">
+            <g
+               id="g7223">
+              <g
+                 id="g7225">
+                <g
+                   id="g7227" />
+              </g>
+            </g>
+            <g
+               id="g7229">
+              <g
+                 transform="translate(85.039,28.346)"
+                 id="g7231">
+                <g
+                   id="g7233" />
+                <g
+                   transform="translate(-85.039,-28.346)"
+                   id="g7235" />
+              </g>
+            </g>
+            <path
+               inkscape:connector-curvature="0"
+               id="path7237"
+               style="fill:none;stroke:#000000;stroke-width:0.3985;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
+               d="M 3.5198,1.17195 81.5206,27.17473" />
+          </g>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>
